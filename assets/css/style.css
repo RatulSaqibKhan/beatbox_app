@@ -1,0 +1,72 @@
+body {
+    background: url('../images/blur-background.jpg') no-repeat center;
+    background-size: cover;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .beatbox {
+        width: 70vw;
+        height: 60vh;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .beatbox {
+        width: 59vw;
+        height: 80vh;
+    }
+}
+
+.beatbox {
+    background-color: rgb(16, 4, 37);
+    border-radius: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-evenly;
+    transition: box-shadow  1s ease-in-out;
+}
+
+.beatbox:hover {
+    box-shadow: 0 0 22px #E91E63;
+}
+
+@media only screen and (max-width: 768px) {
+    .beat {
+        width: 20%;
+        height: 20%;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .beat {
+        width: 20%;
+        height: 25%;
+    }
+}
+
+.beat {
+    flex-basis: 26%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    height: 90%;
+    width: 70%;
+    border: 5px solid aqua;
+    font-size: 2em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
