@@ -18,23 +18,23 @@ const Beatbox = {
         },
         "f": {
             beatAudioPath: 'assets/audio/Drum Sticks Hit 3.mp3',
-            classList: ["button", "button-border-pink"],
-            activeClass: "button-active-pink"
+            classList: ["button", "button-border-golden"],
+            activeClass: "button-active-golden"
         },
         "g": {
             beatAudioPath: 'assets/audio/Drum Snare Roll.mp3',
-            classList: ["button", "button-border-pink"],
-            activeClass: "button-active-pink"
+            classList: ["button", "button-border-golden"],
+            activeClass: "button-active-golden"
         },
         "h": {
             beatAudioPath: 'assets/audio/PREL Musical 57.mp3',
-            classList: ["button", "button-border-pink"],
-            activeClass: "button-active-pink"
+            classList: ["button", "button-border-golden"],
+            activeClass: "button-active-golden"
         },
         "j": {
             beatAudioPath: 'assets/audio/Cymbal Suspended 2.mp3',
-            classList: ["button", "button-border-pink"],
-            activeClass: "button-active-pink"
+            classList: ["button", "button-border-golden"],
+            activeClass: "button-active-golden"
         },
         "k": {
             beatAudioPath: 'assets/audio/Musical Compos 33.mp3',
