@@ -55,6 +55,10 @@ const Beatbox = {
         beatButton: null
     },
 
+    properties: {
+        audio: null
+    },
+
     init() {
         // Create main element
         this.elements.main = document.createElement("div");
@@ -64,6 +68,8 @@ const Beatbox = {
         this.elements.main.appendChild(this._createBeatButtons())
         // Add to DOM
         document.body.appendChild(this.elements.main)
+        // initialize audio
+        this.properties.audio = this._initializeAudios()
     },
 
     // This will create all the beat buttons
@@ -99,17 +105,41 @@ const Beatbox = {
         return fragment
     },
 
-    playBeat(buttonKey) {
-        var audio = new Audio()
-        audio.currentTime = 0
-        audio.src = this.beatDetails[buttonKey].beatAudioPath
-        audio.play()
+    // Initialize the audios and bind with the button element
+    _initializeAudios() {
+        var audios = []
+        Object.keys(this.beatDetails).forEach(key => {
+            let audioButtonElement = document.getElementById(key);
+            let audioInstance = new Audio()
+            
+            audioButtonElement.setAttribute('disabled', true)
+            audioInstance.addEventListener("loadeddata", this.enableAudioButton.bind(audioButtonElement), true);
+
+            audioInstance.src = this.beatDetails[key].beatAudioPath
+            audios.push({
+                'buttonKey': key,
+                'audioInstance': audioInstance,
+                'src': audioInstance.src
+            })
+        })
+        return audios
     },
 
-    onButtonPress(buttonKey) {
-        let beatButtonElement = document.getElementById(buttonKey)
-        let beatDetail = this.beatDetails[buttonKey]
-        beatButtonElement.classList.add(beatDetail.activeClass)
+    enableAudioButton() {
+        this.removeAttribute("disabled"); //reenable the button
+    },
+
+    playBeat(buttonKey) {
+        this.properties.audio.forEach(key => {
+            switch (key.buttonKey) {
+                case buttonKey:
+                    key.audioInstance.currentTime = 0
+                    key.audioInstance.play()
+                    break;
+                default:
+                    break;
+            }
+        })
     },
 
     onButtonUp(buttonKey) {
@@ -124,8 +154,7 @@ document.addEventListener("keydown", (event) => {
     if (!Beatbox.beatDetails.hasOwnProperty(eventKey)) {
         return false
     }
-    Beatbox.playBeat(eventKey)
-    Beatbox.onButtonPress(eventKey)
+    document.getElementById(eventKey).click()
 })
 
 document.addEventListener("keyup", (event) => {
